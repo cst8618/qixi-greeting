@@ -44,33 +44,34 @@
         }
 
         .star.cross {
-            width: 2px;
-            height: 2px;
-            background: transparent;
-            border-radius: 0;
+            width: 4px !important;
+            height: 4px !important;
+            background: transparent !important;
+            border-radius: 0 !important;
         }
 
         .star.cross::before,
         .star.cross::after {
             content: '';
             position: absolute;
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
         }
 
         .star.cross::before {
-            width: 100%;
-            height: 1px;
+            width: 14px;
+            height: 2px;
             top: 50%;
-            left: 0;
-            transform: translateY(-50%);
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .star.cross::after {
-            width: 1px;
-            height: 100%;
+            width: 2px;
+            height: 14px;
             left: 50%;
-            top: 0;
-            transform: translateX(-50%);
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .star.cross {
@@ -83,8 +84,8 @@
         }
 
         @keyframes twinkleCross {
-            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1.8) rotate(45deg); }
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
         }
 
         .cowboy {
