@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>七夕快乐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a0a2e 0%, #16213e 50%, #0f0f23 100%);
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .cowboy {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            padding: 40px;
+        }
+
+        .text {
+            font-size: 72px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b9d, #c44569, #ff6b9d, #ff8a8a);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite;
+            text-shadow: 0 0 40px rgba(255, 107, 157, 0.5);
+            letter-spacing: 20px;
+            position: relative;
+        }
+
+        .text::before {
+            content: '七夕快乐';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg, #ff6b9d, #c44569, #ff6b9d, #ff8a8a);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .sub-text {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 30px;
+            letter-spacing: 8px;
+            animation: fadeIn 2s ease 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hearts {
+            position: fixed;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
+        }
+
+        .decoration {
+            position: fixed;
+            font-size: 40px;
+            opacity: 0.3;
+        }
+
+        .decoration.top-left {
+            top: 10%;
+            left: 10%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .decoration.top-right {
+            top: 15%;
+            right: 10%;
+            animation: rotateReverse 12s linear infinite;
+        }
+
+        .decoration.bottom-left {
+            bottom: 15%;
+            left: 15%;
+            animation: rotate 8s linear infinite;
+        }
+
+        .decoration.bottom-right {
+            bottom: 10%;
+            right: 10%;
+            animation: rotateReverse 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .moon {
+            position: fixed;
+            top: 8%;
+            right: 12%;
+            font-size: 60px;
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8)); }
+        }
+
+        @media (max-width: 768px) {
+            .text {
+                font-size: 48px;
+                letter-spacing: 10px;
+            }
+            .sub-text {
+                font-size: 14px;
+                letter-spacing: 4px;
+            }
+            .cowboy {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="cowboy">🌌</div>
+    
+    <div class="moon">🌙</div>
+    
+    <div class="decoration top-left">✨</div>
+    <div class="decoration top-right">⭐</div>
+    <div class="decoration bottom-left">💫</div>
+    <div class="decoration bottom-right">🌟</div>
+    
+    <div class="container">
+        <div class="text">七夕快乐</div>
+        <div class="sub-text">愿有情人终成眷属</div>
+    </div>
+    
+    <div class="hearts">💕 牵牛织女渡河桥 💕</div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            starsContainer.appendChild(star);
+        }
+
+        // Create floating hearts
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = ['💗', '💕', '💖', '💝', '❤️'][Math.floor(Math.random() * 5)];
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = '110%';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.animation = `floatUp ${Math.random() * 5 + 5}s linear forwards`;
+            heart.style.zIndex = '5';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 10000);
+        }
+
+        // Add float animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+                100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create hearts periodically
+        setInterval(createFloatingHeart, 500);
+    </script>
+</body>
+</html>
