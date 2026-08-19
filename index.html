@@ -44,20 +44,40 @@
         }
 
         .star.cross {
-            width: 8px !important;
-            height: 8px !important;
-            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, transparent 70%);
-            border-radius: 50% !important;
-            box-shadow: 
-                -8px 0 0 -1px rgba(255,255,255,0.95),
-                8px 0 0 -1px rgba(255,255,255,0.95),
-                0 -8px 0 -1px rgba(255,255,255,0.95),
-                0 8px 0 -1px rgba(255,255,255,0.95);
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
         }
 
-        .star.cross::before,
+        .star.cross {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+        .star.cross::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 18px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.4) 80%, transparent 100%);
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+        }
+
         .star.cross::after {
-            display: none;
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 2px;
+            height: 18px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.4) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.4) 80%, transparent 100%);
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
         }
 
         .star.cross {
@@ -71,7 +91,7 @@
 
         @keyframes twinkleCross {
             0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.8); }
+            50% { opacity: 1; transform: scale(1.6); }
         }
 
         .cowboy {
