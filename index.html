@@ -43,9 +43,48 @@
             animation: twinkle 2s ease-in-out infinite;
         }
 
+        .star.cross {
+            width: 2px;
+            height: 2px;
+            background: transparent;
+            border-radius: 0;
+        }
+
+        .star.cross::before,
+        .star.cross::after {
+            content: '';
+            position: absolute;
+            background: white;
+        }
+
+        .star.cross::before {
+            width: 100%;
+            height: 1px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .star.cross::after {
+            width: 1px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .star.cross {
+            animation: twinkleCross 2s ease-in-out infinite;
+        }
+
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        @keyframes twinkleCross {
+            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.8) rotate(45deg); }
         }
 
         .cowboy {
@@ -236,8 +275,15 @@
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
             star.style.animationDelay = Math.random() * 2 + 's';
-            star.style.width = Math.random() * 3 + 1 + 'px';
-            star.style.height = star.style.width;
+            
+            // 30% chance to be a cross star
+            if (Math.random() < 0.3) {
+                star.classList.add('cross');
+            } else {
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+            }
+            
             starsContainer.appendChild(star);
         }
 
