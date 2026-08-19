@@ -240,15 +240,42 @@
 
         @media (max-width: 768px) {
             .text {
-                font-size: 48px;
-                letter-spacing: 10px;
+                font-size: 42px;
+                letter-spacing: 8px;
             }
             .sub-text {
-                font-size: 14px;
-                letter-spacing: 4px;
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+            .couple-text {
+                font-size: 24px;
+                letter-spacing: 3px;
             }
             .cowboy {
-                font-size: 80px;
+                font-size: 60px;
+            }
+            .hearts {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .text {
+                font-size: 32px;
+                letter-spacing: 5px;
+            }
+            .couple-text {
+                font-size: 20px;
+                letter-spacing: 2px;
+                margin-bottom: 15px;
+            }
+            .sub-text {
+                font-size: 11px;
+                letter-spacing: 2px;
+                margin-top: 20px;
+            }
+            .container {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -274,9 +301,14 @@
     <div class="hearts">💕 两情若是久长时，又岂在朝朝暮暮 💕</div>
 
     <script>
+        // Check if mobile
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const starCount = isMobile ? 40 : 100;
+        const heartInterval = isMobile ? 1200 : 500;
+
         // Create stars
         const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             star.style.left = Math.random() * 100 + '%';
@@ -321,7 +353,7 @@
         document.head.appendChild(style);
 
         // Create hearts periodically
-        setInterval(createFloatingHeart, 500);
+        setInterval(createFloatingHeart, heartInterval);
     </script>
 </body>
 </html>
